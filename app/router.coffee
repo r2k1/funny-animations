@@ -3,5 +3,7 @@
 
 Router = Ember.Router.extend(location: config.locationType)
 Router.map ->
+  @route 'gallery'
+  @route 'three-dimensions'
 
 `export default Router;`
