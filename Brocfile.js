@@ -6,6 +6,7 @@ var app = new EmberApp();
 
 app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
 app.import('bower_components/d3/d3.js');
+app.import('bower_components/gl-matrix/dist/gl-matrix.js');
 
 
 // Use `app.import` to add additional libraries to the generated
