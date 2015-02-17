@@ -2,7 +2,12 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "d3",
+    "mat4",
+    "vec3",
+    "vec4",
+    "vec2"
   ],
   "browser": true,
   "boss": true,
