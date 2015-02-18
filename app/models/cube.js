@@ -1,8 +1,9 @@
 import Ember from "ember";
 
 var Cube = Ember.Object.extend({
-  vector: null,
-  element: null,
+  vector:    null, //describes center and edge length
+  container: null,
+  element:   null,
   EDGES: [
     // bottom
     [[-0.5, -0.5, -0.5], [0.5, -0.5, -0.5]],
@@ -24,8 +25,8 @@ var Cube = Ember.Object.extend({
   ],
 
   lines: function() {
-    var length = this.vector[3];
     var transform = mat4.create();
+    var length = this.vector[3];
     mat4.translate(transform, transform, this.vector);
     mat4.scale(transform, transform, [length, length, length]);
 
@@ -37,6 +38,26 @@ var Cube = Ember.Object.extend({
       return [start, end];
     });
   }.property('vector'),
+
+  createElement: function() {
+    if (!this.container) { return; }
+    var element = this.container.append('g').classed('cube', true);
+    this.set('element', element);
+  }.on('init'),
+
+  updateElement: function() {
+    var element = this.get('element');
+    if (!element) { return; }
+    element.selectAll('line')
+        .data(this.get('lines'))
+      .enter()
+        .append('line')
+        .attr('x1', function(d) { return d[0][0];})
+        .attr('y1', function(d) { return d[0][1];})
+        .attr('x2', function(d) { return d[1][0];})
+        .attr('y2', function(d) { return d[1][1];})
+        .attr('stroke', 'black');
+  }.observes('lines', 'element')
 });
 
 export default Cube;
