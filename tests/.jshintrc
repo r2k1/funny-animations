@@ -44,7 +44,11 @@
     "andThen",
     "currentURL",
     "currentPath",
-    "currentRouteName"
+    "currentRouteName",
+    "mat4",
+    "vec3",
+    "vec4",
+    "vec2"
   ],
   "node": false,
   "browser": false,
