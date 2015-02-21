@@ -4,6 +4,7 @@ var Cube = Ember.Object.extend({
   vector:    null, //describes center and edge length
   container: null,
   element:   null,
+  camera:    null,
   EDGES: [
     // bottom
     [[-0.5, -0.5, -0.5], [0.5, -0.5, -0.5]],
@@ -21,14 +22,15 @@ var Cube = Ember.Object.extend({
     [[-0.5, -0.5, -0.5], [-0.5, -0.5, 0.5]],
     [[-0.5, 0.5, -0.5], [-0.5, 0.5, 0.5]],
     [[0.5, -0.5, -0.5], [0.5, -0.5, 0.5]],
-    [[0.5, 0.5, -0.5], [0.5, 0.5, 0.5]],
+    [[0.5, 0.5, -0.5], [0.5, 0.5, 0.5]]
   ],
 
-  lines: function() {
+  linesData: function() {
     var transform = mat4.create();
-    var length = this.vector[3];
-    mat4.translate(transform, transform, this.vector);
-    mat4.scale(transform, transform, [length, length, length]);
+    var length = this.get('vector')[3];
+    mat4.translate(transform, transform, this.get('vector'));
+    mat4.scale(transform, transform, vec3.fromValues(length, length, length));
+    mat4.mul(transform, transform, this.get('camera'));
 
     return this.EDGES.map(function(edge) {
       var start = vec3.create();
@@ -37,27 +39,27 @@ var Cube = Ember.Object.extend({
       vec3.transformMat4(end, edge[1], transform);
       return [start, end];
     });
-  }.property('vector'),
+  }.property('camera', 'vector'),
+
+  line: d3.svg.line(),
+  cubePathString: function() {
+    var line = this.line;
+    return this.get('linesData').map(function(lineData) {
+      return line(lineData);
+    }).join('');
+  }.property('linesData'),
 
   createElement: function() {
-    if (!this.container) { return; }
-    var element = this.container.append('g').classed('cube', true);
-    this.set('element', element);
+    this.element = this.container
+      .append('path')
+      .attr('class', 'cube')
+      .attr('stroke', 'black');
   }.on('init'),
 
   updateElement: function() {
-    var element = this.get('element');
-    if (!element) { return; }
-    element.selectAll('line')
-        .data(this.get('lines'))
-      .enter()
-        .append('line')
-        .attr('x1', function(d) { return d[0][0];})
-        .attr('y1', function(d) { return d[0][1];})
-        .attr('x2', function(d) { return d[1][0];})
-        .attr('y2', function(d) { return d[1][1];})
-        .attr('stroke', 'black');
-  }.observes('lines', 'element')
+    this.element.attr('d', this.get('cubePathString'));
+  }.observes('camera')
+
 });
 
 export default Cube;

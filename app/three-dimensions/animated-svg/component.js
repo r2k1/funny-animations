@@ -1,5 +1,5 @@
 import Ember from "ember";
-import Cube from "funny-animations/three-dimensions/animated-svg/cube";
+import Cube from "funny-animations/models/cube";
 
 var AnimatedSvg = Ember.Component.extend({
   tagName:   'svg',
@@ -10,13 +10,24 @@ var AnimatedSvg = Ember.Component.extend({
   cube:      null,
 
   didInsertElement: function () {
+    this.container = d3.select(this.element)
+      .attr('width', this.width)
+      .attr('height', this.height)
+      .append('g');
+    this.set('cube', Cube.create({
+      vector:    vec4.fromValues(150, 150, 150, 100),
+      container: this.container,
+      camera:    this.get('camera')
+    }));
     d3.timer(this.update.bind(this));
-    this.container = d3.select(this.element).append('g');
-    this.cube = Cube.create({x: 0.5, y: 0.5, z: 0.5, length: 0.3});
   },
 
   update: function() {
-    this.cube.transform(this.camera);
+    var camera = mat4.clone(this.get('camera'));
+    mat4.rotateX(camera, camera, 0.01);
+    mat4.rotateY(camera, camera, 0.02);
+    this.get('cube').set('camera', camera);
+    this.set('camera', camera);
   }
 });
 
