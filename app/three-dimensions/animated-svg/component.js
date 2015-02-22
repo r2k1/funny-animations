@@ -23,11 +23,9 @@ var AnimatedSvg = Ember.Component.extend({
   },
 
   update: function() {
-    var camera = mat4.clone(this.get('camera'));
-    mat4.rotateX(camera, camera, 0.01);
-    mat4.rotateY(camera, camera, 0.02);
-    this.get('cube').set('camera', camera);
-    this.set('camera', camera);
+    mat4.rotateX(this.camera, this.camera, 0.01);
+    mat4.rotateY(this.camera, this.camera, 0.02);
+    this.cube.renderTo(this.camera);
   }
 });
 

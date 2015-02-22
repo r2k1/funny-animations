@@ -25,29 +25,34 @@ var Cube = Ember.Object.extend({
     [[0.5, 0.5, -0.5], [0.5, 0.5, 0.5]]
   ],
 
-  linesData: function() {
-    var transform = mat4.create();
-    var length = this.get('vector')[3];
-    mat4.translate(transform, transform, this.get('vector'));
-    mat4.scale(transform, transform, vec3.fromValues(length, length, length));
-    mat4.mul(transform, transform, this.get('camera'));
-
+  linesData: function(camera) {
+    var transformation = this.transformation(camera);
     return this.EDGES.map(function(edge) {
       var start = vec3.create();
       var end = vec3.create();
-      vec3.transformMat4(start, edge[0], transform);
-      vec3.transformMat4(end, edge[1], transform);
+      vec3.transformMat4(start, edge[0], transformation);
+      vec3.transformMat4(end, edge[1], transformation);
       return [start, end];
     });
-  }.property('camera', 'vector'),
+  },
 
-  line: d3.svg.line(),
-  cubePathString: function() {
-    var line = this.line;
-    return this.get('linesData').map(function(lineData) {
+  transformation: function(camera) {
+    var matrix = mat4.create();
+    var length = this.vector[3];
+    mat4.translate(matrix, matrix, this.vector);
+    mat4.scale(matrix, matrix, vec3.fromValues(length, length, length));
+    if (camera) {
+      mat4.mul(matrix, matrix, camera);
+    }
+    return matrix;
+  },
+
+  cubePathString: function(camera) {
+    var line = d3.svg.line();
+    return this.linesData(camera).map(function(lineData) {
       return line(lineData);
     }).join('');
-  }.property('linesData'),
+  },
 
   createElement: function() {
     this.element = this.container
@@ -56,10 +61,9 @@ var Cube = Ember.Object.extend({
       .attr('stroke', 'black');
   }.on('init'),
 
-  updateElement: function() {
-    this.element.attr('d', this.get('cubePathString'));
-  }.observes('camera')
-
+  renderTo: function(camera) {
+    this.element.attr('d', this.cubePathString(camera));
+  }
 });
 
 export default Cube;
