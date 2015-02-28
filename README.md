@@ -1,7 +1,8 @@
 # Funny-animations
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Examples of different animations with svg and canvas animations in browser.
+
+Check it online at http://animations.arkhan.ninja/
 
 ## Prerequisites
 
