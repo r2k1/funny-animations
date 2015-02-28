@@ -1,33 +1,15 @@
 import Ember from "ember";
 
-var Cube = Ember.Object.extend({
+var SVGObject = Ember.Object.extend({
   vector:    null, //describes center and edge length
   container: null,
   element:   null,
   camera:    null,
-  EDGES: [
-    // bottom
-    [[-0.5, -0.5, -0.5], [0.5, -0.5, -0.5]],
-    [[-0.5, -0.5, -0.5], [-0.5, 0.5, -0.5]],
-    [[0.5, -0.5, -0.5], [0.5, 0.5, -0.5]],
-    [[-0.5, 0.5, -0.5], [0.5, 0.5, -0.5]],
-
-    // top
-    [[-0.5, -0.5, 0.5], [0.5, -0.5, 0.5]],
-    [[-0.5, -0.5, 0.5], [-0.5, 0.5, 0.5]],
-    [[0.5, -0.5, 0.5], [0.5, 0.5, 0.5]],
-    [[-0.5, 0.5, 0.5], [0.5, 0.5, 0.5]],
-
-    // others
-    [[-0.5, -0.5, -0.5], [-0.5, -0.5, 0.5]],
-    [[-0.5, 0.5, -0.5], [-0.5, 0.5, 0.5]],
-    [[0.5, -0.5, -0.5], [0.5, -0.5, 0.5]],
-    [[0.5, 0.5, -0.5], [0.5, 0.5, 0.5]]
-  ],
+  edges:     null,
 
   linesData: function(camera) {
     var transformation = this.transformation(camera);
-    return this.EDGES.map(function(edge) {
+    return this.edges.map(function(edge) {
       var start = vec3.create();
       var end = vec3.create();
       vec3.transformMat4(start, edge[0], transformation);
@@ -47,7 +29,7 @@ var Cube = Ember.Object.extend({
     return matrix;
   },
 
-  cubePathString: function(camera) {
+  pathString: function(camera) {
     var line = d3.svg.line();
     return this.linesData(camera).map(function(lineData) {
       return line(lineData);
@@ -61,8 +43,8 @@ var Cube = Ember.Object.extend({
   }.on('init'),
 
   renderTo: function(camera) {
-    this.element.attr('d', this.cubePathString(camera));
+    this.element.attr('d', this.pathString(camera));
   }
 });
 
-export default Cube;
+export default SVGObject;
