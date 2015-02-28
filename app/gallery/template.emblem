@@ -1,3 +1,3 @@
 h2
- =link-to 'three-dimensions' | 3D Animations
+  link-to 'three-dimensions' | 3D Animations
 p Matrix transforms examples for animation 3D Objects in SVG

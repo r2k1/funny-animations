@@ -1,4 +1,4 @@
 nav.navbar.navbar-default
   .container
     .navbar-header
-      link-to 'gallery' class='navbar-brand' | Gallery
+      link-to .navbar-brand 'Gallery'  'gallery'
