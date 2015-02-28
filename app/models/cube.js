@@ -57,8 +57,7 @@ var Cube = Ember.Object.extend({
   createElement: function() {
     this.element = this.container
       .append('path')
-      .attr('class', 'cube')
-      .attr('stroke', 'black');
+      .attr('class', 'cube');
   }.on('init'),
 
   renderTo: function(camera) {
