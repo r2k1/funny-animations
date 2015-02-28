@@ -1,3 +1,8 @@
 footer.footer
   .container
-    p.text-muted Made by Artur Khantimirov
+    p.text-muted
+      | Made by
+      '
+      a href="https://github.com/yokree" Artur Khantimirov
+      ' ,
+      a href="mailto:me@arkhan.ninja" Leave me a message
