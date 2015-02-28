@@ -1,2 +1,3 @@
+= partial 'application/navbar'
 .container= outlet
 = partial 'application/footer'
