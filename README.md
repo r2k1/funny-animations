@@ -15,7 +15,7 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
+* `git clone git@github.com:yokree/funny-animations.git`
 * change into the new directory
 * `npm install`
 * `bower install`
@@ -41,7 +41,9 @@ Make use of the many generators for code, try `ember help generate` for more det
 
 ### Deploying
 
-Specify what it takes to deploy your app.
+* Setup aws credentials: `cp aws-credentials.json.sample aws-credentials.json`
+* `ember build --environment production` 
+* `gulp`
 
 ## Further Reading / Useful Links
 
