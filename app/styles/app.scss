@@ -1,6 +1,13 @@
 @import 'bower_components/bootstrap-sass/assets/stylesheets/_bootstrap';
+@import 'variables';
+@import 'footer';
 @import 'three-dimensions';
 
-html, body {
-  margin: 20px;
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: $footer-height;
 }
