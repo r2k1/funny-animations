@@ -14,8 +14,9 @@ var RotatingCube = Ember.Component.extend({
       .attr('width', this.width)
       .attr('height', this.height)
       .append('g');
+    var cubeLength = Math.min(this.width, this.height) / 2 / Math.sin(Math.PI / 3);
     this.set('cube', CubeFactory.create().build({
-      vector:    vec4.fromValues(150, 150, 150, 100),
+      vector:    vec4.fromValues(this.width / 2, this.height / 2, 0, cubeLength),
       container: this.container,
       camera:    this.get('camera')
     }));
