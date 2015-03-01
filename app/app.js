@@ -9,10 +9,6 @@ var App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,
   Resolver: Resolver
-  //,LOG_TRANSITIONS_INTERNAL:  true
-  //,LOG_ACTIVE_GENERATION:     true
-  //,LOG_VIEW_LOOKUPS:          true
-  //,LOG_RESOLVER:              true
 });
 
 loadInitializers(App, config.modulePrefix);
