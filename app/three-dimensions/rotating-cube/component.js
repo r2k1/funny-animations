@@ -1,7 +1,7 @@
 import Ember from "ember";
 import CubeFactory from "funny-animations/models/cube-factory";
 
-var AnimatedSvg = Ember.Component.extend({
+var RotatingCube = Ember.Component.extend({
   tagName:   'svg',
   container: null,
   width:     1000,
@@ -29,4 +29,4 @@ var AnimatedSvg = Ember.Component.extend({
   }
 });
 
-export default AnimatedSvg;
+export default RotatingCube;
