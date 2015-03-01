@@ -36,6 +36,7 @@
     "glob": "^4.0.5",
     "gulp": "^3.8.11",
     "gulp-awspublish": "^1.0.4",
-    "gulp-cloudfront": "0.0.14"
+    "gulp-cloudfront": "0.0.14",
+    "gulp-rev-all": "^0.7.6"
   }
 }
