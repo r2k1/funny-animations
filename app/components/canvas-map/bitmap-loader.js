@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 // Convert image to bitmap array
 export default Ember.Object.extend({
   width: 0,

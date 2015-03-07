@@ -1,4 +1,6 @@
+import Ember from 'ember';
 import BitmapLoader from 'funny-animations/components/canvas-map/bitmap-loader';
+
 export default Ember.Object.extend({
   maxWidth:   0,
   cropTop:    0,

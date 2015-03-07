@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import WorldMap from 'funny-animations/components/canvas-map/world-map';
 import EventsRenderer from 'funny-animations/components/canvas-map/events-renderer';
 
