@@ -1,9 +1,7 @@
-import Ember from "ember";
 import Shape from 'funny-animations/models/shape';
 
-var CubeFactory = Ember.Object.extend({
-  build: function(properties) {
-    var edges = [
+var Cube = Shape.extend({
+  edges: [
       // bottom
       [[-0.5, -0.5, -0.5], [0.5, -0.5, -0.5]],
       [[-0.5, -0.5, -0.5], [-0.5, 0.5, -0.5]],
@@ -21,10 +19,7 @@ var CubeFactory = Ember.Object.extend({
       [[-0.5, 0.5, -0.5], [-0.5, 0.5, 0.5]],
       [[0.5, -0.5, -0.5], [0.5, -0.5, 0.5]],
       [[0.5, 0.5, -0.5], [0.5, 0.5, 0.5]]
-    ];
-    var attributes = Ember.Object.create(properties);
-    return Shape.create(attributes.setProperties({edges: edges}));
-  }
+    ]
 });
 
-export default CubeFactory;
+export default Cube;

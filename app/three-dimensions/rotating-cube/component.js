@@ -1,5 +1,5 @@
 import Ember from "ember";
-import CubeFactory from "funny-animations/models/cube-factory";
+import Cube from "funny-animations/models/cube";
 
 var RotatingCube = Ember.Component.extend({
   tagName:   'svg',
@@ -15,7 +15,7 @@ var RotatingCube = Ember.Component.extend({
       .attr('height',height)
       .append('g');
     var cubeLength = Math.min(width, height) / 2 / Math.sin(Math.PI / 3);
-    this.set('cube', CubeFactory.create().build({
+    this.set('cube', Cube.create({
       vector:    vec4.fromValues(width / 2, height / 2, 0, cubeLength),
       container: this.container,
       camera:    this.get('camera')
