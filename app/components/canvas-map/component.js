@@ -20,7 +20,7 @@ export default Ember.Component.extend({
       cropBottom: this.get('cropBottom')
     }));
 
-    this.$(window).on('debouncedresize', this.resize.bind(this));
+    this.$(window).resize(this.resize.bind(this));
     this.resize();
 
     d3.timer(this.renderMap.bind(this));
@@ -74,6 +74,6 @@ export default Ember.Component.extend({
 
   removeEventHandler: function() {
     this.set('stopRender', true);
-    this.$(window).off('debouncedresize');
+    this.$(window).off('resize');
   }.on('willClearRender')
 });
