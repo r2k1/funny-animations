@@ -21,8 +21,9 @@ export default Ember.Object.extend({
   // need to avoid antialiasing artifacts
   width: function() {
     var width = this.get('maxWidth') - this.get('maxWidth') % this.get('_bitmap.width');
-    if (width < this.get('_bitmap.width'))
+    if (width < this.get('_bitmap.width')) {
       width = this.get('_bitmap.width');
+    }
     return width;
   }.property('maxWidth', '_bitmap.width'),
 
@@ -33,19 +34,19 @@ export default Ember.Object.extend({
   }.property('width', '_bitmap.height', '_bitmap.width', 'cropTop', 'cropBottom'),
 
   maxHeight: function() {
-    if (!this.get('width')) return 0;
-    if (!this.get('height')) return 0;
-    if (!this.get('maxWidth')) return 0;
+    if (!this.get('width')) { return 0; }
+    if (!this.get('height')) { return 0; }
+    if (!this.get('maxWidth')) { return 0; }
     return Math.floor(this.get('height') * this.get('maxWidth') / this.get('width'));
   }.property('maxWidth', 'width', 'height'),
 
   horizontalPadding: function() {
-    if (!this.get('width')) return 0;
+    if (!this.get('width')) { return 0; }
     return Math.floor((this.get('maxWidth') - this.get('width')) / 2);
   }.property('width', 'maxWidth'),
 
   verticalPadding: function() {
-    if (!this.get('height')) return 0;
+    if (!this.get('height')) { return 0; }
     return Math.floor((this.get('maxHeight') - this.get('height')) / 2);
   }.property('height', 'maxHeight'),
 

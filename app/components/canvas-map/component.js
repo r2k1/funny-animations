@@ -35,16 +35,16 @@ export default Ember.Component.extend({
 
   renderMap: function() {
     // only way to stop d3 timer
-    if (this.get('stopRender')) return true;
+    if (this.get('stopRender')) { return true; }
     var map = this.get('worldMapCanvas');
     var context = this.get('element').getContext('2d');
     context.clearRect(0, 0, this.get('width'), this.get('height'));
-    if (map) context.drawImage(map, 0, 0);
+    if (map) { context.drawImage(map, 0, 0); }
   },
 
   // cached canvas with map
   worldMapCanvas: function() {
-    if (!this.get('width') || !this.get('height') || !this.get('_worldMap.mapPoints')) return;
+    if (!this.get('width') || !this.get('height') || !this.get('_worldMap.mapPoints')) { return; }
     var canvas = document.createElement('canvas');
     canvas.width = this.get('width');
     canvas.height = this.get('height');

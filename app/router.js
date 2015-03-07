@@ -9,7 +9,7 @@ Router = Ember.Router.extend({
 Router.map(function() {
   this.route('gallery');
   this.route('rotating-cube');
-  this.route('live-world-map')
+  this.route('live-world-map');
 });
 
 export default Router;

@@ -35,8 +35,7 @@ export default Ember.Object.extend({
         data[y] = [];
       }
       var red = rawData[i];
-      if (red < 120)
-        data[y][x] = true;
+      if (red < 120) { data[y][x] = true; }
       x++;
     }
     return data;

@@ -9,7 +9,7 @@ export default Ember.Object.extend({
 
   newEvent: function() {
     var event = this.get('events').shift();
-    if (!event) return;
+    if (!event) { return; }
     var position = this.get('worldMap').positionFromGeo([event.location.lon, event.location.lat]);
     this.renderEventAnimation(position, event.app_id);
   }.observes('events.length'),
