@@ -1,5 +1,5 @@
 import Ember from "ember";
-import SVGObject from 'funny-animations/models/svg-object';
+import Shape from 'funny-animations/models/shape';
 
 var CubeFactory = Ember.Object.extend({
   build: function(properties) {
@@ -23,7 +23,7 @@ var CubeFactory = Ember.Object.extend({
       [[0.5, 0.5, -0.5], [0.5, 0.5, 0.5]]
     ];
     var attributes = Ember.Object.create(properties);
-    return SVGObject.create(attributes.setProperties({edges: edges}));
+    return Shape.create(attributes.setProperties({edges: edges}));
   }
 });
 

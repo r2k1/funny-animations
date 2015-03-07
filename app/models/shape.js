@@ -1,6 +1,6 @@
 import Ember from "ember";
 
-var SVGObject = Ember.Object.extend({
+var Shape = Ember.Object.extend({
   vector:    null, //describes center and edge length
   container: null,
   element:   null,
@@ -47,4 +47,4 @@ var SVGObject = Ember.Object.extend({
   }
 });
 
-export default SVGObject;
+export default Shape;

@@ -1,9 +1,9 @@
 import { test, moduleFor } from 'ember-qunit';
-import SVGObject from 'funny-animations/models/svg-object';
+import Shape from 'funny-animations/models/shape';
 
-module('SVGObject', {
+module('Shape', {
   setup: function() {
-    SVGObject.reopen({
+    Shape.reopen({
       camera: mat4.create(),
       createElement: undefined,
       edges: [[[-0.5, -0.5, -0.5], [0.5, -0.5, -0.5]]]
@@ -12,32 +12,32 @@ module('SVGObject', {
 });
 
 test('linesData', function() {
-  var object = SVGObject.create({vector: [0, 0, 0, 1]});
+  var object = Shape.create({vector: [0, 0, 0, 1]});
   ok(object.linesData().length === 1);
   deepEqual(object.linesData()[0][0], vec3.fromValues(-0.5, -0.5, -0.5));
   deepEqual(object.linesData()[0][1], vec3.fromValues(0.5, -0.5, -0.5));
 });
 
 test('linesData with scale', function() {
-  var object = SVGObject.create({vector: [0, 0, 0, 20]});
+  var object = Shape.create({vector: [0, 0, 0, 20]});
   deepEqual(object.linesData()[0][0], vec3.fromValues(-10, -10, -10));
   deepEqual(object.linesData()[0][1], vec3.fromValues(10, -10, -10));
 });
 
 test('linesData with translate', function() {
-  var object = SVGObject.create({vector: [20, 20, 20, 1]});
+  var object = Shape.create({vector: [20, 20, 20, 1]});
   deepEqual(object.linesData()[0][0], vec3.fromValues(19.5, 19.5, 19.5));
   deepEqual(object.linesData()[0][1], vec3.fromValues(20.5, 19.5, 19.5));
 });
 
 test('linesData with scale translate', function() {
-  var object = SVGObject.create({vector: [20, 20, 20, 20]});
+  var object = Shape.create({vector: [20, 20, 20, 20]});
   deepEqual(object.linesData()[0][0], vec3.fromValues(10, 10, 10));
   deepEqual(object.linesData()[0][1], vec3.fromValues(30, 10, 10));
 });
 
 test('pathString', function() {
-  var object = SVGObject.create({linesData: function() {
+  var object = Shape.create({linesData: function() {
     return [
       [[10, 10, 10], [20, 20, 20]],
       [[30, 30, 30], [40, 40, 40]]
