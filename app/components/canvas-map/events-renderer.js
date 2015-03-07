@@ -16,16 +16,14 @@ export default Ember.Object.extend({
     var context = this.get('context');
     var self = this;
     d3.select({}).transition()
-      .duration(10000)
-      .ease('sin-out')
+      .duration(5000)
       .tween('release', function() {
         return function(time) {
           self.renderEvent(time, position, appId, context);
         };
       })
       .transition()
-      .duration(10000)
-      .ease('sin-out')
+      .duration(5000)
       .tween('fadeout', function() {
         return function(time) {
           context.globalAlpha = 1 - time;
