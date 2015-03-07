@@ -2,6 +2,7 @@ import Ember from "ember";
 
 var RotatingCubeController = Ember.Controller.extend({
   camera: mat4.create(),
+  isShowCamera: false,
 
   init: function() {
     setInterval(this.rotateCamera.bind(this), 1);
@@ -15,6 +16,11 @@ var RotatingCubeController = Ember.Controller.extend({
     this.set('camera', newCamera);
   },
 
+  actions: {
+    toggleIsShowCamera: function() {
+      this.toggleProperty('isShowCamera');
+    }
+  }
 });
 
 export default RotatingCubeController;
