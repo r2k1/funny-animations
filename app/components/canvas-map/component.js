@@ -6,7 +6,6 @@ import EventsRenderer from 'funny-animations/components/canvas-map/events-render
 export default Ember.Component.extend({
   tagName:    'canvas',
   events:     null,
-  appIds:     [],
   cropTop:    0.06,
   cropBottom: 0.3,
   width: Ember.computed.oneWay('_worldMap.maxWidth'),
@@ -28,8 +27,7 @@ export default Ember.Component.extend({
     EventsRenderer.create({
       events:   this.get('events'),
       context:  this.get('element').getContext('2d'),
-      worldMap: this.get('_worldMap'),
-      appIds:   this.get('appIds')
+      worldMap: this.get('_worldMap')
     });
   },
 

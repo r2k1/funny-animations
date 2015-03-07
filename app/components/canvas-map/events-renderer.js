@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Object.extend({
   events: null,
-  appIds: [],
   context: null,
   worldMap: null,
   colour: '#00a0e3',
@@ -14,14 +13,14 @@ export default Ember.Object.extend({
     this.renderEventAnimation(position, event.app_id);
   }.observes('events.length'),
 
-  renderEventAnimation: function(position, appId) {
+  renderEventAnimation: function(position) {
     var context = this.get('context');
     var self = this;
     d3.select({}).transition()
       .duration(5000)
       .tween('release', function() {
         return function(time) {
-          self.renderEvent(time, position, appId, context);
+          self.renderEvent(time, position, context);
         };
       })
       .transition()
@@ -29,13 +28,13 @@ export default Ember.Object.extend({
       .tween('fadeout', function() {
         return function(time) {
           context.globalAlpha = 1 - time;
-          self.renderEvent(1, position, appId, context);
+          self.renderEvent(1, position, context);
           context.globalAlpha = 1;
         };
       });
   },
 
-  renderEvent: function(time, position, appId, context) {
+  renderEvent: function(time, position, context) {
     var colour = this.get('colour');
     var distanceBetweenPoints = this.get('worldMap.interval');
     // position - upper left coordinates
