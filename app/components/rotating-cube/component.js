@@ -21,14 +21,12 @@ var RotatingCube = Ember.Component.extend({
       container: this.container,
       camera:    this.get('camera')
     }));
-    setInterval(this.update.bind(this), 1);
+    this.update();
   },
 
   update: function() {
-    mat4.rotateX(this.camera, this.camera, 0.005);
-    mat4.rotateY(this.camera, this.camera, 0.01);
     this.cube.renderTo(this.camera);
-  }
+  }.observes('camera')
 });
 
 export default RotatingCube;
