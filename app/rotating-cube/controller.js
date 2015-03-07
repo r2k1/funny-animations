@@ -1,6 +1,6 @@
 import Ember from "ember";
 
-var ThreeDimensionController = Ember.Controller.extend({
+var RotatingCubeController = Ember.Controller.extend({
   camera: mat4.create(),
 
   init: function() {
@@ -13,7 +13,8 @@ var ThreeDimensionController = Ember.Controller.extend({
     mat4.rotateY(newCamera, newCamera, 0.01);
   // reassign new value to camera to fire observers
     this.set('camera', newCamera);
-  }
+  },
+
 });
 
-export default ThreeDimensionController;
+export default RotatingCubeController;

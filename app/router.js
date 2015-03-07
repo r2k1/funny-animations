@@ -8,7 +8,7 @@ Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('gallery');
-  return this.route('three-dimensions');
+  return this.route('rotating-cube');
 });
 
 export default Router;
