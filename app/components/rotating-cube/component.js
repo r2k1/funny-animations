@@ -6,6 +6,7 @@ var RotatingCube = Ember.Component.extend({
   container: null,
   camera:    mat4.create(),
   cube:      null,
+  test:      null,
 
   didInsertElement: function () {
     var width = this.$().parent().width();
