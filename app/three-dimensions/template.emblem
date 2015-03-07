@@ -3,4 +3,4 @@
     #cube-svg= cube-svg camera=camera
   .col-xs-4
     h3 Camera Matrix:
-    matrix-component matrix=camera
+    matrix-table matrix=camera

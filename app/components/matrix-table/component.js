@@ -1,6 +1,6 @@
 import Ember from "ember";
 
-var MatrixComponent = Ember.Component.extend({
+var MatrixTable = Ember.Component.extend({
   matrix: null,
   array: function () {
     var array = Array.prototype.map.call(this.get('matrix'), function(value) {
@@ -13,4 +13,4 @@ var MatrixComponent = Ember.Component.extend({
   }.property('matrix')
 });
 
-export default MatrixComponent;
+export default MatrixTable;
