@@ -1,12 +1,11 @@
 import Ember from "ember";
 import Cube from "funny-animations/models/cube";
 
-var RotatingCube = Ember.Component.extend({
+var CubeSVG = Ember.Component.extend({
   tagName:   'svg',
   container: null,
   camera:    mat4.create(),
   cube:      null,
-  test:      null,
 
   didInsertElement: function () {
     var width = this.$().parent().width();
@@ -29,4 +28,4 @@ var RotatingCube = Ember.Component.extend({
   }.observes('camera')
 });
 
-export default RotatingCube;
+export default CubeSVG;
