@@ -1,6 +1,6 @@
 h2
-  link-to 'rotating-cube' | 3D Animations
-p Matrix transforms examples for animation 3D Objects in SVG.
+  link-to 'rotating-cube' | Rotating cube
+p Example of affine transformation on SVG
 h2
  link-to 'live-world-map' | Live world map
 p
