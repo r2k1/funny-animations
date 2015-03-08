@@ -6,8 +6,7 @@ var LiveWorldMapController = Ember.Controller.extend({
   eventsPerSecond: 2,
 
   delay: function() {
-    console.log(this.get('eventsPerSecond'));
-    return 1000 / this.get('eventsPerSecond');
+    return 1000 / parseInt(this.get('eventsPerSecond'));
   }.property('eventsPerSecond'),
 
   startEventGenerator: function() {
