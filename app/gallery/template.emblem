@@ -1,6 +1,9 @@
 h2
   link-to 'rotating-cube' | 3D Animations
-p Matrix transforms examples for animation 3D Objects in SVG
+p Matrix transforms examples for animation 3D Objects in SVG.
 h2
  link-to 'live-world-map' | Live world map
-p Animated live events on the world map
+p
+  | High permormant canvas live event renderer on world map.
+  '
+  | Supports auto resize and dynamically adjusts width and height based on container size.
