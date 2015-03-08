@@ -54,6 +54,7 @@ export default Ember.Component.extend({
   renderCircle: function(context, position) {
     var distanceBetweenPoints = this.get('_worldMap.interval');
     var radius   = Math.floor( distanceBetweenPoints / 2.25);
+    if (radius < 1) { radius = 1; distanceBetweenPoints = 0; }
     // position - upper left coordinates
     var x = Math.floor(position[0] + distanceBetweenPoints / 2);
     var y = Math.floor(position[1] + distanceBetweenPoints / 2);
