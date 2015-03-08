@@ -1,1 +1,9 @@
-canvas-map events=events
+.container.live-world-map
+  .row
+    .form-horizontal
+      .form-group
+        label #{eventsPerSecond} events per second
+        .col-xs-3
+          = input valueBinding='eventsPerSecond' type='range' min='0' max='10' step='0.5'
+  .row
+    = canvas-map events=events

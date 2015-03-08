@@ -6,7 +6,7 @@ var LiveWorldMapRoute = Ember.Route.extend({
       this.controller.set('events', []);
       this.controller.startEventGenerator();
     },
-    willTransition: function() { this.controller.set('runTimer', false); }
+    willTransition: function() { this.controller.stopEventGenerator(); }
   }
 });
 
