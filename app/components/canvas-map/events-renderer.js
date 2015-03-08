@@ -41,14 +41,11 @@ export default Ember.Object.extend({
     var x = Math.floor(position[0] + distanceBetweenPoints / 2);
     var y = Math.floor(position[1] + distanceBetweenPoints / 2);
     this.renderCircle(context, colour, position);
-    context.shadowBlur = 15;
-    context.shadowColor = '#03b3ed';
     context.strokeStyle = colour;
     context.lineWidth = 2;
     context.beginPath();
     context.arc(x, y, 20 * time, 0, 2 * Math.PI);
     context.stroke();
-    context.shadowColor = "transparent";
   },
 
   renderCircle: function(context, colour, position) {
