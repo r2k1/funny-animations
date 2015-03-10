@@ -1,6 +1,6 @@
 h2
-  link-to 'cube' | Rotating cube
-p Example of affine transformation on SVG
+  link-to 'cube' | Rotating camera
+p Example of affine transformation. Rotating camera around shapes.
 h2
  link-to 'live-world-map' | Live world map
 p
