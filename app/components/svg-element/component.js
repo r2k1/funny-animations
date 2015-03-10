@@ -4,8 +4,6 @@ export default Ember.Component.extend({
   width: null,
   height: null,
   classNames: ['svg-container'],
-  // emblem doesn't support svg tags
-  template: Ember.Handlebars.compile('<svg>{{yield}}</svg>'),
 
   setResize: function() {
     this.resize();
