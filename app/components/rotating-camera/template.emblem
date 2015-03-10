@@ -1,2 +1,2 @@
-svg-element class='rotating-cube'
+svg-element class='rotating-camera'
   shape-svg shape=cube camera=camera class='cube'
