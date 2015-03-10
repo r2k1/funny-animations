@@ -1,2 +1,3 @@
 svg-element class='rotating-camera'
-  shape-svg shape=cube camera=camera class='cube'
+  = each shape in shapes
+    shape-svg shape=shape camera=camera class='cube'

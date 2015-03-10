@@ -3,9 +3,17 @@ import Cube from 'funny-animations/models/cube';
 
 export default Ember.Component.extend({
   camera: mat4.create(),
-  cube: Cube.create({
-    vector: vec4.fromValues(200, 200, 0, 100),
-  }),
+  shapes: [
+    Cube.create({
+      vector: vec4.fromValues(200, 200, 0, 100),
+    }),
+    Cube.create({
+      vector: vec4.fromValues(100, 100, 0, 50),
+    }),
+    Cube.create({
+      vector: vec4.fromValues(130, 140, 0, 30),
+    }),
+  ],
 
   _timer: null,
 
