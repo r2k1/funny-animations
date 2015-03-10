@@ -2,9 +2,6 @@ import Ember from "ember";
 
 var Shape = Ember.Object.extend({
   vector:    null, //describes center and edge length
-  container: null,
-  element:   null,
-  camera:    null,
   edges:     null,
 
   linesData: function(camera) {
@@ -35,16 +32,6 @@ var Shape = Ember.Object.extend({
       return line(lineData);
     }).join('');
   },
-
-  createElement: function() {
-    this.element = this.container
-      .append('path')
-      .attr('class', 'cube');
-  }.on('init'),
-
-  renderTo: function(camera) {
-    this.element.attr('d', this.pathString(camera));
-  }
 });
 
 export default Shape;

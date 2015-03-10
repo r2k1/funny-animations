@@ -1,7 +1,8 @@
-#cube-svg {
+.rotating-cube {
   display: block;
   height: 400px;
-  .cube {
+  width: 500px;
+  path {
     stroke-width:2;
     stroke: black;
   }

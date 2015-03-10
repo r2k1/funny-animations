@@ -1,9 +1,0 @@
-.row
-  .col-xs-10
-    #cube-svg= cube-svg camera=camera
-  .col-xs-2
-    a.btn.btn-default.btn-block.btn-primary class={isShowCamera:disabled} click='toggleIsShowCamera' href='#' Show camera
-    a.btn.btn-default.btn-block.btn-danger class={isShowCamera::disabled} click='toggleIsShowCamera' href='#' Hide camera
-    if isShowCamera
-      h4 Camera Matrix:
-      matrix-table matrix=camera

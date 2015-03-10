@@ -1,0 +1,2 @@
+svg-element class='rotating-cube'
+  shape-svg shape=cube camera=camera class='cube'
