@@ -4,7 +4,7 @@ var Shape = Ember.Object.extend({
   vector:    null, //describes center and edge length
   edges:     null,
 
-  linesData: function(camera) {
+  lines: function(camera) {
     var transformation = this.transformation(camera);
     return this.edges.map(function(edge) {
       var start = vec3.create();
@@ -24,14 +24,7 @@ var Shape = Ember.Object.extend({
       mat4.mul(matrix, matrix, camera);
     }
     return matrix;
-  },
-
-  pathString: function(camera) {
-    var line = d3.svg.line();
-    return this.linesData(camera).map(function(lineData) {
-      return line(lineData);
-    }).join('');
-  },
+  }
 });
 
 export default Shape;

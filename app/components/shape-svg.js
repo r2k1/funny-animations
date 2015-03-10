@@ -4,20 +4,27 @@ export default Ember.Component.extend({
   tagName: 'g',
   shape: null,
   camera: null,
-  path: null,
+  shapeSelector: null,
+
+  path: function() {
+    var shape = this.get('shape');
+    var camera = this.get('camera');
+    var line = d3.svg.line();
+    return shape.lines(camera).map(function(lineData) {
+      return line(lineData);
+    }).join('');
+  }.property('camera', 'shape'),
 
   didInsertElement: function() {
-    var path = d3.select(this.element)
+    var shapeSelector = d3.select(this.element)
       .append('path')
       .attr('class', 'shape');
-    this.set('path', path);
+    this.set('shapeSelector', shapeSelector);
   },
 
   render: function() {
-    if (!(this.get('camera') && this.get('shape') && this.get('path'))) {
-      return;
-    }
-    var pathString = this.get('shape').pathString(this.get('camera'));
-    this.get('path').attr('d', pathString);
-  }.observes('camera', 'shape', 'path')
+    var shapeSelector = this.get('shapeSelector');
+    if (!shapeSelector) { return; }
+    shapeSelector.attr('d', this.get('path'));
+  }.observes('path', 'shapeSelector')
 });
