@@ -4,6 +4,6 @@ p Example of affine transformation. Rotating camera around shapes.
 h2
  link-to 'live-world-map' | Live world map
 p
-  | High permormant canvas live event renderer on world map.
+  | High performance canvas live event renderer on world map.
   '
   | Supports auto resize and dynamically adjusts width and height based on container size.
