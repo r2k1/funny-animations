@@ -7,3 +7,7 @@ p
   | High performance canvas live event renderer on world map.
   '
   | Supports auto resize and dynamically adjusts width and height based on container size.
+p.text-success
+  | Source code you can find
+  '
+  a href='http://github.com/yokree/funny-animations' here
